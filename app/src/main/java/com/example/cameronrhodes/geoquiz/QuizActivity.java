@@ -58,8 +58,8 @@ public class QuizActivity extends AppCompatActivity {
     private int unansweredQuestions;
 
     private void updateQuestion() {
-        if(wasQuestionAnswered)
-            unansweredQuestions--;
+//        if(wasQuestionAnswered)
+//            unansweredQuestions--;
         if(currentIndex < questionBank.length) {
             int question = questionBank[currentIndex].getTextResId();
             questionTextView.setText(question);
@@ -89,6 +89,9 @@ public class QuizActivity extends AppCompatActivity {
             messageResId = R.string.response_incorrect;
             if(!wasQuestionAnswered)
                 incorrectAnswers++;
+        }
+        if(!wasQuestionAnswered) {
+            unansweredQuestions--;
         }
         wasQuestionAnswered = true;
         Toast.makeText(QuizActivity.this, messageResId, Toast.LENGTH_SHORT).show();
